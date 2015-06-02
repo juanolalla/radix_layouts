@@ -2,10 +2,9 @@ radix_bryant_flipped:
   label: Bryant Flipped
   category: Radix
   path: plugins/layouts/radix_bryant_flipped
-  theme: radix_bryant_flipped
+  template: radix-bryant-flipped
   icon: radix-bryant-flipped.png
-  # TODO: should probably always include this!
-  css: ../../../radix_layouts.css
+  library: radix_layouts/radix_layouts
   regions:
     sidebar:
       label: Sidebar
