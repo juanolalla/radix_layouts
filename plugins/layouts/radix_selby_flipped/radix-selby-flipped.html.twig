@@ -9,33 +9,54 @@
  * panel of the layout. This layout supports the following sections:
  */
 #}
+{%
+    set container_classes = [
+    'panel-display',
+    'selby-flipped',
+    'clearfix'
+]
+%}
+{% if classes %}
+    {% set container_classes = container_classes|merge(classes) %}
+{% endif %}
+{% if class %}
+    {% set container_classes = container_classes|merge(class) %}
+{% endif %}
 
-<div class="panel-display selby-flipped clearfix {% if classes %}{{ classes }}{% endif %}{% if class %}{{ class }}{% endif %}" {% if css_id %}{{ css_id }}{% endif %}>
+<div {{ attributes.addClass(container_classes) }}{% if css_id %}{{ css_id }}{% endif %}>
 
   <div class="container-fluid">
     <div class="row">
       <div class="col-md-8 panel-panel">
         <div class="row">
           <div class="col-md-12 radix-layouts-contentheader panel-panel">
-            {{ content.contentheader }}
+            <div {{ region_attributes.contentheader.addClass('panel-panel-inner') }}>
+              {{ content.contentheader }}
+            </div>
           </div>
         </div>
         <div class="row">
           <div class="col-md-6 radix-layouts-contentcolumn1 panel-panel">
-            {{ content.contentcolumn1 }}
+            <div {{ region_attributes.contentheader.addClass('panel-panel-inner') }}>
+                {{ content.contentcolumn1 }}
+            </div>
           </div>
           <div class="col-md-6 radix-layouts-contentcolumn2 panel-panel">
-            {{ content.contentcolumn2 }}
+            <div {{ region_attributes.contentheader.addClass('panel-panel-inner') }}>
+                {{ content.contentcolumn2 }}
+            </div>
           </div>
         </div>
         <div class="row">
           <div class="col-md-12 radix-layouts-contentfooter panel-panel">
-            {{ content.contentfooter }}
+            <div {{ region_attributes.contentheader.addClass('panel-panel-inner') }}>
+                {{ content.contentfooter }}
+            </div>
           </div>
         </div>
       </div>
       <div class="col-md-4 radix-layouts-sidebar panel-panel">
-        <div class="panel-panel-inner">
+        <div {{ region_attributes.sidebar.addClass('panel-panel-inner') }}>
           {{ content.sidebar }}
         </div>
       </div>

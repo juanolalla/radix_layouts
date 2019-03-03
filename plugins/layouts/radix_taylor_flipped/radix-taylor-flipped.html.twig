@@ -9,14 +9,27 @@
  * panel of the layout. This layout supports the following sections:
  */
 #}
+{%
+    set container_classes = [
+    'panel-display',
+    'taylor-flipped',
+    'clearfix'
+]
+%}
+{% if classes %}
+    {% set container_classes = container_classes|merge(classes) %}
+{% endif %}
+{% if class %}
+    {% set container_classes = container_classes|merge(class) %}
+{% endif %}
 
-<div class="panel-display taylor-flipped clearfix {% if class %}{{ class }}{% endif %}" {% if css_id %}{{ css_id }}{% endif %}>
+<div {{ attributes.addClass(container_classes) }}{% if css_id %}{{ css_id }}{% endif %}>
 
   <div class="container-fluid">
     {% if content.header %}
       <div class="row">
         <div class="col-md-12 radix-layouts-header panel-panel">
-          <div class="panel-panel-inner">
+          <div {{ region_attributes.header.addClass('panel-panel-inner') }}>
             {{ content.header }}
           </div>
         </div>
@@ -25,17 +38,17 @@
 
     <div class="row">
       <div class="col-md-3 radix-layouts-quarter1 panel-panel">
-        <div class="panel-panel-inner">
+        <div {{ region_attributes.quarter1.addClass('panel-panel-inner') }}>
           {{ content.quarter1 }}
         </div>
       </div>
       <div class="col-md-3 radix-layouts-quarter2 panel-panel">
-        <div class="panel-panel-inner">
+        <div {{ region_attributes.quarter2.addClass('panel-panel-inner') }}>
           {{ content.quarter2 }}
         </div>
       </div>
       <div class="col-md-6 radix-layouts-half panel-panel">
-        <div class="panel-panel-inner">
+        <div {{ region_attributes.half.addClass('panel-panel-inner') }}>
           {{ content.half }}
         </div>
       </div>
@@ -44,7 +57,7 @@
     {% if content.footer %}
       <div class="row">
         <div class="col-md-12 radix-layouts-footer panel-panel">
-          <div class="panel-panel-inner">
+          <div {{ region_attributes.footer.addClass('panel-panel-inner') }}>
             {{ content.footer }}
           </div>
         </div>
