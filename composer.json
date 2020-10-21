@@ -1,0 +1,7 @@
+{
+  "name": "drupal/radix_layouts",
+  "type": "drupal-module",
+  "require": {
+    "drupal/core": "^8 || ^9"
+  }
+}
